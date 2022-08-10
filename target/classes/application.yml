@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: root
-    password: wy19970302
-    url: jdbc:mysql://47.106.230.215:3306/user_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    password: disApple1
+    url: jdbc:mysql://192.168.0.7:3306/user_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
@@ -23,7 +23,7 @@ spring:
 
     #配置监控统计拦截的filters
     # stat:监控统计
-    # log4j:日志记录(需要导入log4j依赖)
+    # j:日志记录(需要导入log4j依赖)
     # wall:防御sql注入
     filters: stat,wall,log4j
     maxPoolPreparedStatementPerConnectionSize: 20
