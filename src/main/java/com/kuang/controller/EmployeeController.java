@@ -18,7 +18,8 @@ import java.util.List;
 
 @Controller
 public class EmployeeController {
-//
+
+// Service省略直接跳到mapper
 //    @Autowired
 //    private EmployeeDao employeeDao;
 //
@@ -31,6 +32,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeMapper employeeMapper;
 
+    /***
+     * 查出所有员工信息
+     * @param model
+     * @return list
+     */
     @RequestMapping("/emps")
     public String list(Model model) {
         List<EmployeePojo> employees = employeeMapper.getAllEmployee();
@@ -38,9 +44,13 @@ public class EmployeeController {
         return "emp/list";
     }
 
+    /***
+     * 查出所有部门信息
+     * @param  model
+     * @return add
+     */
     @GetMapping("/emp")
     public String toAddpage(Model model) {
-        //查出所有部门信息
         List<Department> departments = departmentMapper.selectAll();
         model.addAttribute("departments", departments);
 
@@ -48,6 +58,11 @@ public class EmployeeController {
     }
 
 
+    /***
+     * 追加一条信息
+     * @param employee
+     * @return
+     */
     @PostMapping("/emp")
     public String addpage(Employee employee) {
         employeeMapper.insert(employee);
@@ -55,6 +70,12 @@ public class EmployeeController {
     }
 
 
+    /***
+     * 更新
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/emp/{id}")
     public String toUpdatePage(@PathVariable("id") Integer id, Model model) {
         Employee employee = employeeMapper.selectByPrimaryKey(id);
@@ -64,6 +85,11 @@ public class EmployeeController {
         return "emp/update";
     }
 
+    /***
+     *
+     * @param employee
+     * @return
+     */
     @PostMapping("/updateEmp")
     public String updateEmp(Employee employee) {
         employeeMapper.updateByPrimaryKey(employee);
@@ -71,6 +97,11 @@ public class EmployeeController {
     }
 
 
+    /***
+     * 删除
+     * @param id
+     * @return emps
+     */
     @GetMapping("/delEmp/{id}")
     public String delEmp(@PathVariable("id") Integer id) {
         employeeMapper.deleteByPrimaryKey(id);

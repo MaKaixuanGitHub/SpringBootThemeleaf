@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface EmployeeMapper extends Mapper<Employee> {
 
+    // 查询所有员工信息
     List<EmployeePojo> getAllEmployee();
 }
