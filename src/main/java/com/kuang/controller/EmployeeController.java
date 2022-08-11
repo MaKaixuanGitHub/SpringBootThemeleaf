@@ -85,7 +85,7 @@ public class EmployeeController {
     }
 
     /***
-     *
+     * 更新一条数据
      * @param employee
      * @return
      */
@@ -98,7 +98,7 @@ public class EmployeeController {
 
 
     /***
-     * 删除
+     * 删除一条数据
      * @param id
      * @return emps
      */

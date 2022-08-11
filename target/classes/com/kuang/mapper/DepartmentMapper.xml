@@ -13,7 +13,7 @@
     id, department_name
   </sql>
 
-<select id="" resultMap="BaseResultMap" resultType="java.util.List" >
+<select id="getAllDepartments" resultMap="BaseResultMap" resultType="java.util.List" >
   select t_department.*
    from t_department;
 </select>

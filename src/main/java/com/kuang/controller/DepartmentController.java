@@ -14,6 +14,13 @@ import java.util.List;
 @Controller
 public class DepartmentController {
 
+// Service省略直接跳到mapper
+//    @Autowired
+//    private EmployeeDao employeeDao;
+//
+//    @Autowired
+//    private DepartmentDao departmentDao;
+
     @Autowired
     private DepartmentMapper departmentMapper;
 

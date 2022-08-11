@@ -14,5 +14,5 @@ public class DepartmentPojo implements Serializable {
 
     private Integer id;
 
-    private String deptName;
+    private String departmentName;
 }
