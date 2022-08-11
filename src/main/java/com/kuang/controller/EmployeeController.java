@@ -8,10 +8,7 @@ import com.kuang.pojo.EmployeePojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -37,7 +34,7 @@ public class EmployeeController {
      * @param model
      * @return list
      */
-    @RequestMapping("/emps")
+    @RequestMapping(value = "/emps", method = {RequestMethod.GET})
     public String list(Model model) {
         List<EmployeePojo> employees = employeeMapper.getAllEmployee();
         model.addAttribute("emps", employees);
@@ -63,7 +60,8 @@ public class EmployeeController {
      * @param employee
      * @return
      */
-    @PostMapping("/emp")
+    // PostMapping
+    @RequestMapping(value = "/emp", method = {RequestMethod.POST})
     public String addpage(Employee employee) {
         employeeMapper.insert(employee);
         return "redirect:/emps";
@@ -76,7 +74,8 @@ public class EmployeeController {
      * @param model
      * @return
      */
-    @GetMapping("/emp/{id}")
+//    @GetMapping("/emp/{id}")
+    @RequestMapping(value = "/emp/{id}", method = {RequestMethod.GET})
     public String toUpdatePage(@PathVariable("id") Integer id, Model model) {
         Employee employee = employeeMapper.selectByPrimaryKey(id);
         Collection<Department> departments = departmentMapper.selectAll();
@@ -90,7 +89,8 @@ public class EmployeeController {
      * @param employee
      * @return
      */
-    @PostMapping("/updateEmp")
+//    @PostMapping("/updateEmp")
+    @RequestMapping(value = "/updateEmp", method = {RequestMethod.POST})
     public String updateEmp(Employee employee) {
         employeeMapper.updateByPrimaryKey(employee);
         return "redirect:/emps";
@@ -102,7 +102,8 @@ public class EmployeeController {
      * @param id
      * @return emps
      */
-    @GetMapping("/delEmp/{id}")
+//    @GetMapping("/delEmp/{id}")
+    @RequestMapping(value = "/delEmp/{id}", method = {RequestMethod.GET})
     public String delEmp(@PathVariable("id") Integer id) {
         employeeMapper.deleteByPrimaryKey(id);
         return "redirect:/emps";

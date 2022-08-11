@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 /**
  * 德鲁伊的配置文件
- * @author Wang Yue
+ * @author makaixuan
  */
 @Configuration
 public class DruidConfig {

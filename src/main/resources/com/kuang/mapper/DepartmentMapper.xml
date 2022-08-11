@@ -7,8 +7,14 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
   </resultMap>
+
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Mon Nov 16 02:08:31 CST 2020.-->
     id, department_name
   </sql>
+
+<select id="" resultMap="BaseResultMap" resultType="java.util.List" >
+  select t_department.*
+   from t_department;
+</select>
 </mapper>

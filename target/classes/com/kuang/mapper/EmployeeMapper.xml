@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.kuang.mapper.EmployeeMapper">
   <resultMap id="BaseResultMap" type="com.kuang.model.Employee">
     <!--@mbg.generated generated on Mon Nov 16 01:57:16 CST 2020.-->
@@ -11,6 +12,7 @@
     <result column="birth" jdbcType="TIMESTAMP" property="birth" />
     <result column="department_id" jdbcType="INTEGER" property="departmentId" />
   </resultMap>
+
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Mon Nov 16 01:57:16 CST 2020.-->
     id, lastName, email, gender, birth, department_id
