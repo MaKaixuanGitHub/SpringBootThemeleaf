@@ -5,6 +5,8 @@ import com.kuang.mapper.EmployeeMapper;
 import com.kuang.model.Department;
 import com.kuang.model.Employee;
 import com.kuang.pojo.EmployeePojo;
+import com.kuang.service.DepartmentDao;
+import com.kuang.service.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,18 +18,12 @@ import java.util.List;
 @Controller
 public class EmployeeController {
 
-// Service省略直接跳到mapper
-//    @Autowired
-//    private EmployeeDao employeeDao;
-//
-//    @Autowired
-//    private DepartmentDao departmentDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Autowired
-    private DepartmentMapper departmentMapper;
+    private DepartmentDao departmentDao;
 
-    @Autowired
-    private EmployeeMapper employeeMapper;
 
     /***
      * 查出所有员工信息
@@ -36,7 +32,7 @@ public class EmployeeController {
      */
     @RequestMapping(value = "/emps", method = {RequestMethod.GET})
     public String list(Model model) {
-        List<EmployeePojo> employees = employeeMapper.getAllEmployee();
+        List<EmployeePojo> employees = employeeDao.getAllEmployee();
         model.addAttribute("emps", employees);
         return "emp/list";
     }
@@ -48,7 +44,7 @@ public class EmployeeController {
      */
     @GetMapping("/emp")
     public String toAddpage(Model model) {
-        List<Department> departments = departmentMapper.selectAll();
+        Collection<Department> departments = departmentDao.selectAll();
         model.addAttribute("departments", departments);
 
         return "emp/add";
@@ -63,7 +59,7 @@ public class EmployeeController {
     // PostMapping
     @RequestMapping(value = "/emp", method = {RequestMethod.POST})
     public String addpage(Employee employee) {
-        employeeMapper.insert(employee);
+        employeeDao.insert(employee);
         return "redirect:/emps";
     }
 
@@ -77,8 +73,8 @@ public class EmployeeController {
 //    @GetMapping("/emp/{id}")
     @RequestMapping(value = "/emp/{id}", method = {RequestMethod.GET})
     public String toUpdatePage(@PathVariable("id") Integer id, Model model) {
-        Employee employee = employeeMapper.selectByPrimaryKey(id);
-        Collection<Department> departments = departmentMapper.selectAll();
+        Employee employee = employeeDao.selectByPrimaryKey(id);
+        Collection<Department> departments = departmentDao.selectAll();
         model.addAttribute("departments", departments);
         model.addAttribute("employee", employee);
         return "emp/update";
@@ -92,7 +88,7 @@ public class EmployeeController {
 //    @PostMapping("/updateEmp")
     @RequestMapping(value = "/updateEmp", method = {RequestMethod.POST})
     public String updateEmp(Employee employee) {
-        employeeMapper.updateByPrimaryKey(employee);
+        employeeDao.updateByPrimaryKey(employee);
         return "redirect:/emps";
     }
 
@@ -105,7 +101,7 @@ public class EmployeeController {
 //    @GetMapping("/delEmp/{id}")
     @RequestMapping(value = "/delEmp/{id}", method = {RequestMethod.GET})
     public String delEmp(@PathVariable("id") Integer id) {
-        employeeMapper.deleteByPrimaryKey(id);
+        employeeDao.deleteByPrimaryKey(id);
         return "redirect:/emps";
     }
 }

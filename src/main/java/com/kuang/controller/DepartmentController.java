@@ -8,29 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 @Controller
 public class DepartmentController {
 
-// Service省略直接跳到mapper
-//    @Autowired
-//    private EmployeeDao employeeDao;
-//
-//    @Autowired
-//    private DepartmentDao departmentDao;
-
     @Autowired
     private DepartmentMapper departmentMapper;
-
 
     /***
      * 查询所有部门
      * @param model
      * @return
      */
-    @RequestMapping("/depts")
+    @RequestMapping(value = "/depts", method = {RequestMethod.GET})
     public String list(Model model) {
         List<DepartmentPojo> dpartments = departmentMapper.getAllDepartments();
         model.addAttribute("depts", dpartments);
