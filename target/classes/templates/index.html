@@ -13,12 +13,13 @@
 	</head>
 
 	<body class="text-center">
-		<form class="form-signin" th:action="@{/login}" th:method="post">
+		<form class="form-signin" th:action="@{/user/login}">
 			<img class="mb-4" th:src="@{/img/bootstrap-solid.svg}" alt="" width="72" height="72">
 			<h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
 
 			<!--如果msg为空，则不显示消息-->
 			<p style="color: #ff0000" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
 
 			<label class="sr-only">Username</label>
 			<input type="text" name="username" class="form-control" th:placeholder="#{login.username}" required="" autofocus="">
