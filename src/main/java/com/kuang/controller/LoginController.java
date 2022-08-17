@@ -14,14 +14,15 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
-        if (!StringUtils.isEmpty(username) && "1234".equals(password)) {
-            session.setAttribute("loginUser", username);
-            return "redirect:/main.html";
-        }else {
-            //告诉用户登录失败
-            model.addAttribute("msg", "用户名或者密码错误");
-            return "index";
-        }
+//        if (!StringUtils.isEmpty(username) && "1234".equals(password)) {
+//            session.setAttribute("loginUser", username);
+//            return "redirect:/main.html";
+//        }else {
+//            //告诉用户登录失败
+//            model.addAttribute("msg", "用户名或者密码错误");
+//            return "index";
+//        }
+        return "redirect:/main.html";
     }
 
     @RequestMapping("/logout")
