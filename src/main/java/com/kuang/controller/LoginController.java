@@ -5,23 +5,17 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class LoginController {
 
     @RequestMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
-//        if (!StringUtils.isEmpty(username) && "1234".equals(password)) {
-//            session.setAttribute("loginUser", username);
-//            return "redirect:/main.html";
-//        }else {
-//            //告诉用户登录失败
-//            model.addAttribute("msg", "用户名或者密码错误");
-//            return "index";
-//        }
+    public String login() {
+        System.out.println("LoginController===================>開始");
         return "redirect:/main.html";
     }
 
