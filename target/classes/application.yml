@@ -29,6 +29,3 @@ spring:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
-# Tomcat端口号
-server:
-  port: 8090
